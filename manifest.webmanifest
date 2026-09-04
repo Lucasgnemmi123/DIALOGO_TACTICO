@@ -1,0 +1,19 @@
+{
+  "name": "Diálogo Táctico DHL",
+  "short_name": "Diálogo DHL",
+  "description": "Tablero para cortes operativos durante la jornada",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#ffcc00",
+  "theme_color": "#ffcc00",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

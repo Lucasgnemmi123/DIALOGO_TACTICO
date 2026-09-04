@@ -1,0 +1,2 @@
+@import url("reference-theme.css");
+.cut-chip.warning::part(base){border-color:#e6a100;color:#241b00;background:#f3b61f}.cut-chip.warning:hover::part(base){background:#ffc62e}.shift-group.complete-shift{border-left-color:#27a66d}.shift-group.complete-shift>span{color:#52d493}.shift-group.warning-shift{border-left-color:#e5a719}.shift-group.warning-shift>span{color:#ffc33d}
