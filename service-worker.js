@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dhl-board-shell-v120';
+const CACHE_NAME = 'dhl-board-shell-v121';
 const APP_SHELL = ['./', './index.html', './styles.css', './framework-theme.css', './components.css', './layout-v2.css', './meeting-status.css', './interactions.css', './workforce-edit.css', './clear-step.css', './day-tools.css', './shifts.css', './validation-status.css', './reference-theme.css', './app.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png', './oms-first-choice.png', './dhl-logo.svg', './lucide.min.js', './Inter-Variable.ttf', './BarlowCondensed-SemiBold.ttf', './BarlowCondensed-ExtraBold.ttf'];
 
 self.addEventListener('install', event => {

@@ -99,11 +99,12 @@ function markDirty(){dirty=true;document.body.classList.add('has-unsaved');const
 function validateCurrentMeeting(){
   const missing=[],sectionNames={foco:'Foco',productividad:'Productividad',horas:'Horas'};
   for(const [indicator,label] of Object.entries(sectionNames)){
-    const targets=[...document.querySelectorAll(`.data-card[data-indicator="${indicator}"] .stat b,.data-card[data-indicator="${indicator}"] .editable-cell`)].filter(target=>!target.closest('tr')?.hidden);
-    if(!targets.length||!targets.every(target=>target.dataset.entered==='true'))missing.push(label);
+    document.querySelectorAll(`.data-card[data-indicator="${indicator}"]`).forEach(card=>{
+      const targets=[...card.querySelectorAll('.stat b,.editable-cell')].filter(target=>!target.closest('tr')?.hidden);
+      if(!targets.some(target=>target.dataset.entered==='true'))missing.push(`${label} · ${areaNames[card.dataset.area]||card.dataset.area}`);
+    });
   }
-  const hasCompleteDotacion=Object.values(crewEntered).every(area=>area.operativo&&area.grua);
-  if(!hasCompleteDotacion)missing.push('Dotación');
+  Object.entries(crewEntered).forEach(([area,roles])=>{if(!roles.operativo&&!roles.grua)missing.push(`Dotación · ${areaNames[area]}`)});
   return{valid:missing.length===0,missing};
 }
 function paintMeetingStates(){document.querySelectorAll('.cut-chip').forEach(button=>{const session=dailyRecord?.sessions?.[button.dataset.cut],hasDraft=Boolean(dailyRecord?.drafts?.[button.dataset.cut]),complete=Boolean(session?.validation?.valid&&!hasDraft),warning=Boolean(session&&!session?.validation?.valid&&!hasDraft);button.classList.toggle('complete',complete);button.classList.toggle('warning',warning);button.classList.toggle('incomplete',!complete&&!warning)});document.querySelectorAll('.shift-group').forEach(group=>{const buttons=[...group.querySelectorAll('.cut-chip')],allComplete=buttons.every(button=>button.classList.contains('complete')),hasWarning=buttons.some(button=>button.classList.contains('warning'));group.classList.toggle('complete-shift',allComplete);group.classList.toggle('warning-shift',!allComplete&&hasWarning)})}
