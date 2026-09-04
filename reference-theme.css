@@ -419,10 +419,10 @@ body.summary-open .app-header{grid-template-columns:145px 142px minmax(300px,1fr
 @media(max-height:800px){.shift-cube{width:145px;height:134px;margin-right:30px}.cube-front{inset:32px 0 0 32px}.cube-front b{font-size:43px}.cube-top{left:32px;width:113px;height:33px}.cube-side{right:-32px;top:32px;width:33px;height:102px}}
 
 /* Recursos tipográficos locales para funcionamiento sin conexión. */
-@font-face{font-family:"Inter";src:url("assets/Inter-Variable.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:"Barlow Condensed";src:url("assets/BarlowCondensed-SemiBold.ttf") format("truetype");font-style:normal;font-weight:600;font-display:swap}
-@font-face{font-family:"Barlow Condensed";src:url("assets/BarlowCondensed-Bold.ttf") format("truetype");font-style:normal;font-weight:700;font-display:swap}
-@font-face{font-family:"Barlow Condensed";src:url("assets/BarlowCondensed-ExtraBold.ttf") format("truetype");font-style:normal;font-weight:800;font-display:swap}
+@font-face{font-family:"Inter";src:url("Inter-Variable.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url("BarlowCondensed-SemiBold.ttf") format("truetype");font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url("BarlowCondensed-ExtraBold.ttf") format("truetype");font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:"Barlow Condensed";src:url("BarlowCondensed-ExtraBold.ttf") format("truetype");font-style:normal;font-weight:800;font-display:swap}
 
 /* Botones nativos: reemplazan Shoelace sin cambiar la apariencia. */
 .save-meeting{height:36px;display:flex;align-items:center;justify-content:center;gap:7px;padding:0 13px;border:0;border-radius:7px;color:#fff;background:#d40511;font-family:"Inter","Segoe UI",sans-serif;font-size:10px;font-weight:900;box-shadow:0 4px 10px #8e000866;white-space:nowrap;touch-action:manipulation}
