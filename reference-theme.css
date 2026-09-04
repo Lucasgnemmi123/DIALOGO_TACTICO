@@ -429,6 +429,7 @@ body.summary-open .app-header{grid-template-columns:145px 142px minmax(300px,1fr
 .save-meeting svg{width:16px;height:16px}.save-meeting:active{transform:translateY(1px);background:#ae0710}
 .clear-button{height:38px;min-height:38px;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 11px;border:1px solid #42647d;border-radius:8px;color:#fff;background:linear-gradient(#143d5c,#0a2d48);font-family:"Inter","Segoe UI",sans-serif;font-size:11px;font-weight:800;box-shadow:0 4px 10px #0005;white-space:nowrap;touch-action:manipulation}
 .clear-button svg{width:15px;height:15px}.cut-chip{appearance:none;display:grid;place-items:center;padding:0;cursor:pointer;touch-action:manipulation}.cut-chip.active{border-color:#ffdd36!important;color:#17202a!important;background:linear-gradient(#ffe244,#ffc800)!important;box-shadow:0 0 12px #ffcc0066!important}.cut-chip.complete{border-color:#21bd75}.cut-chip.incomplete:not(.active){color:#fff}
+.qra-view-toggle svg,.hse-view-toggle svg,.business-lines-toggle svg{display:block!important;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.qra-view-toggle svg .icon-fill,.hse-view-toggle svg .icon-fill,.business-lines-toggle svg .icon-fill{fill:currentColor;stroke:none}
 
 /* Pestaña OMS activa con contraste inequívoco. */
 .area-tabs button.active{border-color:#ffe45c;color:#102233;background:linear-gradient(180deg,#ffe45c,#ffc800);box-shadow:inset 0 1px #fff9,0 0 0 2px #ffd00055,0 4px 10px #0005;text-shadow:none}
