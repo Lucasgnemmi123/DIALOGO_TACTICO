@@ -114,7 +114,19 @@ function applySnapshot(saved){if(!saved)return;if(saved.values?.length){const ta
 function blankSnapshot(cut){const blank=structuredClone(initialSnapshot);blank.cut=cut;blank.notes='';blank.values=blank.values.map(()=>'0');blank.entered=blank.values.map(()=>false);blank.transferBalance=emptyTransferBalance();Object.keys(blank.crew).forEach(area=>{blank.crew[area].operativo=0;blank.crew[area].grua=0;blank.crewEntered[area].operativo=false;blank.crewEntered[area].grua=false});return blank}
 function shiftForCut(cut){return shifts.find(shift=>shift.cuts.includes(cut))}
 function snapshotHasEnteredData(snapshot){return Boolean(snapshot&&(snapshot.entered?.some(Boolean)||Object.values(snapshot.crewEntered||{}).some(roles=>roles?.operativo||roles?.grua)))}
-function inheritedSnapshot(cut){const shift=shiftForCut(cut),index=shift?.cuts.indexOf(cut)??-1;if(index<1)return null;for(let position=index-1;position>=0;position--){const previousCut=shift.cuts[position],snapshot=dailyRecord.sessions[previousCut];if(snapshot&&snapshotHasEnteredData(snapshot)){const inherited=structuredClone(snapshot);inherited.cut=cut;inherited.completed=false;delete inherited.validation;delete inherited.updatedAt;return{snapshot:inherited,source:previousCut}}return null}
+function inheritedSnapshot(cut){
+  const shift=shiftForCut(cut),index=shift?.cuts.indexOf(cut)??-1;
+  if(index<1)return null;
+  for(let position=index-1;position>=0;position--){
+    const previousCut=shift.cuts[position],snapshot=dailyRecord.sessions[previousCut];
+    if(snapshot&&snapshotHasEnteredData(snapshot)){
+      const inherited=structuredClone(snapshot);
+      inherited.cut=cut;inherited.completed=false;delete inherited.validation;delete inherited.updatedAt;
+      return{snapshot:inherited,source:previousCut};
+    }
+  }
+  return null;
+}
 function storeCurrentDraft(){if(!dirty)return;persistCurrentDraft();paintMeetingStates()}
 function legacyLoadMeeting(cut){const saved=dailyRecord.sessions[cut],draft=dailyRecord.drafts[cut],inherited=!saved&&!draft?inheritedSnapshot(cut):null,source=draft||saved||inherited?.snapshot||blankSnapshot(cut);applySnapshot({...structuredClone(source),cut});document.querySelector('#cutTime').textContent=cut;updateInlineCounts();dirty=Boolean(draft);document.body.classList.toggle('has-unsaved',dirty);document.querySelector('#lastSaved').textContent=draft?`Borrador ${cut} · sin guardar`:saved?`Reunión ${cut} completada`:inherited?`Base heredada desde ${inherited.source}`:'Inicio de turno · reunión pendiente'}
 function resetForNewDay(simulated=false){syncSafetyCounter(simulated);activeDate=todayKey();dailyRecord=emptyDailyRecord();writeDailyRecord();paintMeetingStates();loadMeeting(cuts[0]);closeCalculators();closeClearPanel();document.querySelector('#lastSaved').textContent=simulated?'Cambio de día simulado · tablero limpio':'Nuevo día · tablero limpio'}
