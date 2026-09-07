@@ -442,3 +442,52 @@ body.summary-open .app-header{grid-template-columns:145px 142px minmax(300px,1fr
 /* Pestaña OMS activa con contraste inequívoco. */
 .area-tabs button.active{border-color:#ffe45c;color:#102233;background:linear-gradient(180deg,#ffe45c,#ffc800);box-shadow:inset 0 1px #fff9,0 0 0 2px #ffd00055,0 4px 10px #0005;text-shadow:none}
 .area-tabs button.active:hover,.area-tabs button.active:focus-visible{border-color:#fff3a0;color:#0b1c2a;background:linear-gradient(180deg,#ffeb78,#ffd000);outline:2px solid #fff;outline-offset:2px}
+
+/* Logos locales: ambos visibles en el tablero y en el resumen. */
+.app-header{grid-template-columns:250px minmax(0,1fr) 108px auto auto}
+body.summary-open .app-header{grid-template-columns:250px 142px minmax(0,1fr) 108px auto auto}
+.app-header .logo-box{width:250px;gap:16px;padding-right:14px;flex-shrink:0}
+.app-header .logo-box .dhl-logo{width:112px;height:auto;object-fit:contain}
+.app-header .logo-box .aramark-logo{width:106px;height:auto;max-height:34px;object-fit:contain}
+.app-header .heading{min-width:0;gap:8px}
+.app-header .heading h1,.app-header .heading span{font-size:clamp(16px,1.4vw,27px);letter-spacing:.025em}
+.app-header .heading span{padding-left:8px}
+@media(max-width:1350px){
+ .app-header{grid-template-columns:210px minmax(0,1fr) 98px auto auto}
+ body.summary-open .app-header{grid-template-columns:210px 120px minmax(0,1fr) 98px auto auto}
+ .app-header .logo-box{width:210px;gap:12px;padding-right:10px}
+ .app-header .logo-box .dhl-logo{width:94px}
+ .app-header .logo-box .aramark-logo{width:90px}
+ .app-header .heading{flex-wrap:wrap;gap:3px 8px}
+ .app-header .heading span{font-size:13px}
+}
+
+@media(max-width:1350px){.app-header .cut-box{min-width:98px}}
+
+/* Controles del encabezado: tipografía normal y superficies limpias. */
+.app-header .cut-box,
+.app-header .carousel-mode,
+.app-header .save-meeting{height:38px;border-radius:8px;box-shadow:none;font-family:"Segoe UI",Arial,sans-serif;letter-spacing:normal}
+.app-header .cut-box{display:flex;flex-direction:column;justify-content:center;gap:2px;padding:4px 11px;border:1px solid #181f2926;background:#ffffff80}
+.app-header .cut-box>span{font-family:inherit;font-size:9px;font-weight:600;line-height:1;text-transform:none;letter-spacing:normal;color:#4b442c}
+.app-header .cut-box button{width:100%;justify-content:space-between;gap:8px;color:#17202a;font-family:inherit}
+.app-header .cut-box b{font-family:inherit;font-size:17px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.app-header .cut-box small{width:6px;height:6px;margin-right:2px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);font-size:0}
+.app-header .carousel-mode,
+.app-header .save-meeting{gap:8px;padding:0 14px;font-size:12px;font-weight:600;line-height:1;transition:background-color .15s,border-color .15s}
+.app-header .carousel-mode{border:1px solid #181f2933;color:#17202a;background:#ffffff50}
+.app-header .carousel-mode:hover{background:#ffffff90;border-color:#181f2955}
+.app-header .carousel-mode[aria-pressed="true"]{color:#fff;background:#16394e;border-color:#16394e;box-shadow:none}
+.app-header .save-meeting{border:1px solid #bd0410;color:#fff;background:#d40511}
+.app-header .save-meeting:hover{background:#b9040f;border-color:#a9030d}
+.app-header .save-meeting:active{background:#a9030d;transform:translateY(1px)}
+.app-header .carousel-mode svg,
+.app-header .save-meeting svg{width:16px;height:16px;flex-shrink:0;stroke-width:1.8}
+.app-header .cut-box button:focus-visible,
+.app-header .carousel-mode:focus-visible,
+.app-header .save-meeting:focus-visible{outline:2px solid #16394e;outline-offset:2px}
+@media(max-width:1350px){.app-header .carousel-mode,.app-header .save-meeting{padding-inline:11px;font-size:11px}}
+
+/* Reloj local del dispositivo, disponible sin conexi?n. */
+#systemTime{padding-left:10px;border-left:1px solid #ffffff40;color:#ffd000;font-family:"Segoe UI",Arial,sans-serif;font-size:16px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1;white-space:nowrap}
+@media(max-width:1350px){#systemTime{font-size:14px}}
