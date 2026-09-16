@@ -71,7 +71,7 @@ body{min-width:0}
 .hse-prevention-view>span{font-size:clamp(9px,.7vw,11px)}
 .prevention-index{min-height:0;display:block;position:relative}
 .prevention-index svg{display:block;width:100%;height:100%;min-height:0;overflow:hidden;transform:none}
-.prevention-index>b{position:absolute;z-index:1;top:61%;bottom:auto;left:50%;transform:translate(-50%,-50%);padding:0 5px;font-size:clamp(30px,3.7vh,41px);line-height:1;background:transparent}
+.prevention-index>b{position:absolute;z-index:1;top:61%;bottom:auto;left:50%;transform:translate(-50%,-50%);padding:0 5px;font-size:clamp(32px,4.2vh,47px);line-height:1;background:transparent}
 .prevention-legend{gap:2px;padding:0;font-size:clamp(6px,.55vw,8px)}
 .prevention-legend span{gap:3px}
 
@@ -110,7 +110,7 @@ body.summary-open .summary-view{height:calc(100vh - 88px);min-height:0;padding:6
   .summary-access-card>#openSummary{gap:6px;padding:2px 4px}
   .oms-daily-cube{--oms-cube-size:clamp(44px,8.5vh,64px);--oms-cube-depth:12px}
   .oms-cube-front b{font-size:clamp(23px,3.6vh,29px)}
-  .prevention-index>b{top:54%;font-size:clamp(16px,2.8vh,22px)}
+  .prevention-index>b{top:54%;font-size:clamp(24px,4vh,31px)}
 }
 @media(max-width:1350px){
   .board{grid-template-columns:minmax(0,1fr) 235px}
@@ -168,4 +168,5 @@ body.summary-open .summary-view{height:calc(100vh - 88px);min-height:0;padding:6
   .oms-cube-title{font-size:10px;line-height:1}
   .oms-daily-cube{--oms-cube-size:clamp(24px,5.5vh,30px);--oms-cube-depth:6px}
   .oms-cube-front b{font-size:clamp(16px,3.5vh,20px)}
+  .prevention-index>b{top:50%;font-size:20px}
 }
