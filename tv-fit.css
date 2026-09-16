@@ -1,0 +1,162 @@
+/* Keep the entire board inside the TV viewport. */
+html,body{width:100%;height:100%;overflow:hidden}
+body{min-width:0}
+.board{height:calc(100vh - 154px);min-height:0;min-width:0;grid-template-columns:minmax(0,1fr) minmax(250px,310px);gap:10px;padding:8px 12px}
+.operations{min-width:0;min-height:0;grid-template-columns:60px minmax(0,1.42fr) minmax(0,.62fr) minmax(0,.62fr) minmax(0,1.48fr);grid-template-rows:32px repeat(3,minmax(0,1fr));gap:7px}
+.operations>*{min-width:0;min-height:0}
+.side-panel{min-width:0;min-height:0;grid-template-rows:32px repeat(3,minmax(0,1fr));gap:7px}
+.side-panel>.side-card{min-width:0;min-height:0}
+.data-card h2,.side-card header{flex:0 0 auto}
+.focus-card td{font-size:clamp(13px,1.05vw,19px)}
+.focus-card td:first-child{font-size:clamp(10px,.8vw,14px);padding-left:5px}
+.focus-card[data-visible-lines="1"] td,.focus-card[data-visible-lines="2"] td,.focus-card[data-visible-lines="3"] td,.focus-card[data-visible-lines="4"] td{font-size:clamp(14px,1.2vw,20px)}
+.focus-card[data-visible-lines="1"] td:first-child,.focus-card[data-visible-lines="2"] td:first-child,.focus-card[data-visible-lines="3"] td:first-child,.focus-card[data-visible-lines="4"] td:first-child{font-size:clamp(10px,.85vw,15px)}
+.stat b{font-size:clamp(23px,2vw,34px)}
+.dotacion .workforce-role{min-width:0;grid-template-columns:minmax(0,1fr) 36px;gap:5px;padding:5px}
+.dotacion .person-handle{width:36px;height:clamp(38px,5vh,48px)}
+.workforce-fields{min-width:0;gap:4px}
+.workforce-numbers{min-width:0}
+.workforce-numbers strong{font-size:clamp(23px,2vw,32px)!important}
+.workforce-numbers small{font-size:clamp(7px,.65vw,9px)}
+.business-lines-menu{max-height:min(260px,calc(100vh - 120px));overflow-y:auto}
+
+/* Three independent QRA views: radar, five dimensions, customer audit. */
+.qra-card>header{grid-template-columns:68px minmax(0,1fr) 68px}
+.qra-card>header h2{grid-column:2;font-size:clamp(13px,1vw,17px)}
+.qra-view-controls{grid-column:3;display:flex;align-items:center;justify-content:flex-end;gap:4px}
+.qra-view-controls .qra-view-toggle,.customer-audit-toggle{position:static;display:grid;place-items:center;width:30px;height:30px;min-width:30px;margin:0;padding:0;border:1px solid #64849a;border-radius:7px;color:#fff;background:#244d68;touch-action:manipulation}
+.qra-view-controls .qra-view-toggle[aria-pressed="true"],.customer-audit-toggle[aria-pressed="true"]{border-color:#ffd23f;color:#17202a;background:#ffd23f}
+.customer-audit-toggle svg{width:16px;height:16px;stroke-width:2}
+.qra-card[data-qra-view="cliente"] .qra-radar,.qra-card[data-qra-view="cliente"] .qra-grid{display:none}
+.qra-card:not([data-qra-view="cliente"]) .customer-audit-view{display:none}
+.qra-card .qra-radar svg{transform:scale(1.06);transform-origin:center}
+.qra-card .qra-radar-value{font-size:clamp(26px,2.2vw,36px)}
+.qra-card>div{min-height:0;padding:5px!important}
+.qra-card .qra-grid{min-height:0;grid-template-rows:repeat(5,minmax(0,1fr));gap:3px}
+.qra-grid .radar-score{min-height:0!important;padding:2px 7px}
+.qra-card.qra-detail-mode .radar-score{align-self:stretch;height:100%}
+.qra-grid .radar-score b{font-size:clamp(16px,1.3vw,21px)}
+.qra-grid .radar-score small{font-size:clamp(8px,.65vw,10px)}
+.customer-audit-view{min-height:0;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;width:100%;color:#fff;font-family:"Inter","Segoe UI",sans-serif;text-align:center}
+.customer-audit-view>span{font-size:clamp(10px,.8vw,13px);font-weight:900;letter-spacing:.04em}
+.customer-audit-score{width:min(100%,190px);min-height:62px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:1px solid #42647b;border-radius:10px;color:#fff;background:#103b59;touch-action:manipulation}
+.customer-audit-score b{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:clamp(30px,3vh,42px);line-height:1}
+.customer-audit-score small{color:#afc8d7;font-size:9px}
+.customer-audit-view.on-target .customer-audit-score b{color:#6ee29e}
+.customer-audit-scale{position:relative;width:min(90%,200px);height:25px;display:flex;align-items:flex-end;justify-content:space-between;padding-top:8px;color:#adc5d3;font-size:8px}
+.customer-audit-scale::before{content:"";position:absolute;left:0;right:0;top:1px;height:5px;border-radius:5px;background:#214960}
+.customer-audit-scale::after{content:"";position:absolute;left:90%;top:-2px;width:2px;height:11px;background:#fff;transform:translateX(-50%)}
+.customer-audit-scale i{position:absolute;left:0;top:1px;width:var(--audit-level,0%);height:5px;border-radius:5px;background:#ffd23f}
+.customer-audit-view.on-target .customer-audit-scale i{background:#42c47b}
+.customer-audit-scale strong{color:#ffe06b;font-size:9px}
+
+/* Small OMS logo and a daily cube sized for the available TV card. */
+.summary-access-card>header{position:relative;flex-basis:36px;height:36px}
+.summary-access-card>header h2{font-size:16px}
+.oms-header-logo{position:absolute;right:8px;top:50%;width:32px;height:28px;object-fit:contain;transform:translateY(-50%)}
+.summary-access-card>#openSummary{height:calc(100% - 36px);min-height:0;gap:clamp(9px,1.2vh,14px);padding:3px 6px}
+.oms-cube-title{font-size:clamp(10px,.8vw,13px);font-weight:900;letter-spacing:.02em;text-align:center}
+.oms-daily-cube{--oms-cube-size:clamp(64px,10vh,108px);--oms-cube-depth:clamp(13px,2vh,19px);position:relative;display:block;flex:0 0 auto;width:calc(var(--oms-cube-size) + var(--oms-cube-depth) + var(--oms-cube-depth));height:calc(var(--oms-cube-size) + var(--oms-cube-depth));margin:0;filter:drop-shadow(0 5px 5px #0007)}
+.oms-cube-front{position:absolute;left:var(--oms-cube-depth);top:var(--oms-cube-depth);width:var(--oms-cube-size);height:var(--oms-cube-size);display:grid;place-items:center;border:1px solid #ffe888;border-radius:3px;background:linear-gradient(to top,#d4a918 0 var(--oms-cube-level),#264358 var(--oms-cube-level) 100%)}
+.oms-cube-front b{color:#fff;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:clamp(29px,4vh,44px);line-height:1;text-shadow:0 2px 3px #001722}
+.oms-cube-top{position:absolute;left:var(--oms-cube-depth);top:0;width:var(--oms-cube-size);height:var(--oms-cube-depth);transform:skewX(-42deg);transform-origin:left bottom;border:1px solid #ffe888;border-radius:4px 4px 0 0;background:#967b2c}
+.oms-cube-side{position:absolute;right:0;top:var(--oms-cube-depth);width:var(--oms-cube-depth);height:var(--oms-cube-size);transform:skewY(-42deg);transform-origin:left top;border:1px solid #e5c45c;border-radius:0 3px 4px 0;background:#725b1c}
+.oms-cube-count{color:#c5d6df;font-size:clamp(8px,.7vw,10px);font-weight:700}
+
+/* Place the prevention value inside the open middle of the arc. */
+.hse-prevention-view{min-height:0;grid-template-rows:15px minmax(0,1fr) 16px;gap:2px;padding:2px 4px!important}
+.hse-prevention-view>span{font-size:clamp(9px,.7vw,11px)}
+.prevention-index{min-height:0;display:block;position:relative}
+.prevention-index svg{display:block;width:100%;height:100%;min-height:0;overflow:hidden;transform:none}
+.prevention-index>b{position:absolute;z-index:1;top:54%;bottom:auto;left:50%;transform:translate(-50%,-50%);padding:0 5px;font-size:clamp(27px,3.3vh,38px);line-height:1;background:transparent}
+.prevention-legend{gap:2px;padding:0;font-size:clamp(6px,.55vw,8px)}
+.prevention-legend span{gap:3px}
+
+/* The OMS detail cards and cubes also fit one screen. */
+body.summary-open .summary-view{height:calc(100vh - 88px);min-height:0;padding:6px 12px 8px}
+.summary-content{min-height:0;gap:6px;padding:0}
+.area-tabs{flex:0 0 36px;height:36px}
+.area-dashboard{min-height:0;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:7px}
+.dashboard-panel>header{flex:0 0 36px;height:36px;min-width:0;padding-inline:9px}
+.dashboard-panel>header b{font-size:clamp(11px,.85vw,14px)}
+.dashboard-panel>header>small{max-width:48%;font-size:clamp(7px,.6vw,9px)}
+.shift-cubes{min-height:0;gap:4px;padding:3px 8px 6px}
+.shift-cube-card{min-width:0;padding:2px}
+.shift-cube{--cube-size:clamp(98px,9vw,172px);width:var(--cube-size);height:calc(var(--cube-size)*.93);margin:0 calc(var(--cube-size)*.21) 4px 0}
+.cube-front{inset:calc(var(--cube-size)*.22) 0 0 calc(var(--cube-size)*.22)}
+.cube-front b{font-size:clamp(30px,2.9vw,52px)}
+.cube-top{left:calc(var(--cube-size)*.22);width:calc(var(--cube-size)*.78);height:calc(var(--cube-size)*.23)}
+.cube-side{right:calc(var(--cube-size)*-.22);top:calc(var(--cube-size)*.22);width:calc(var(--cube-size)*.23);height:calc(var(--cube-size)*.71)}
+.shift-cube-card>strong{font-size:clamp(10px,.8vw,14px)}
+.shift-cube-card>small{font-size:clamp(8px,.62vw,10px);line-height:1.1}
+.heat-cell{min-width:0;padding:5px 7px}
+.heat-cell b{min-width:0;font-size:clamp(22px,2vw,30px)}
+.heat-cell small,.heat-cell span{font-size:clamp(8px,.65vw,10px)}
+
+@media(max-height:800px){
+  .board{height:calc(100vh - 146px)}
+  .cut-nav-collapsed .board{height:calc(100vh - 112px)}
+  body.summary-open .summary-view{height:calc(100vh - 84px)}
+  .side-panel{gap:5px}
+  .operations{gap:5px}
+  .summary-access-card>header{flex-basis:33px;height:33px}
+  .summary-access-card>#openSummary{height:calc(100% - 33px)}
+  .customer-audit-score{min-height:52px}
+}
+@media(max-height:700px){
+  .summary-access-card>#openSummary{gap:4px;padding:2px 4px}
+  .oms-daily-cube{--oms-cube-size:clamp(44px,8vh,58px);--oms-cube-depth:12px}
+  .oms-cube-front b{font-size:clamp(23px,3.6vh,29px)}
+  .prevention-index>b{font-size:clamp(16px,2.8vh,22px)}
+}
+@media(max-width:1350px){
+  .board{grid-template-columns:minmax(0,1fr) 255px}
+  .operations{grid-template-columns:54px minmax(0,1.35fr) minmax(0,.6fr) minmax(0,.6fr) minmax(0,1.45fr)}
+  .dotacion .workforce-role{grid-template-columns:minmax(0,1fr) 30px;gap:3px;padding:3px}
+  .dotacion .person-handle{width:30px}
+  .workforce-numbers strong{font-size:clamp(20px,2vw,27px)!important}
+  .workforce-numbers small{font-size:7px}
+  .qra-card>header{grid-template-columns:65px minmax(0,1fr) 65px}
+  .qra-view-controls .qra-view-toggle,.customer-audit-toggle{width:28px;min-width:28px;height:28px}
+}
+@media(max-width:1200px){
+  .column-head b{gap:3px;font-size:11px}
+  .column-head b svg{width:13px;height:13px}
+  .data-card .stat small{font-size:7px}
+  .focus-card th{padding-inline:1px;font-size:8px;line-height:1.05}
+}
+
+/* Labels stay on one line at every supported TV viewport. */
+.board :is(h2,h3,span,small,strong,th,td),.summary-view :is(h2,h3,span,small,strong,th,td),.app-header :is(h1,span,small,b),.cut-nav :is(span,b,button),footer :is(span,b,time){white-space:nowrap;overflow-wrap:normal;word-break:normal}
+.data-card h2{min-width:0;gap:4px;padding-inline:5px;font-size:clamp(9px,.8vw,11px)}
+.data-card h2 svg{width:clamp(11px,1vw,15px);height:clamp(11px,1vw,15px);flex:0 0 auto}
+.focus-card h2{padding-left:6px;padding-right:36px}
+.focus-card th{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:clamp(8px,.72vw,10px);font-weight:700;letter-spacing:0}
+.workforce-numbers small{min-height:0;letter-spacing:0}
+.column-head b,.side-card header h2{min-width:0;white-space:nowrap}
+.column-head b svg{flex:0 0 auto}
+.contextual-calculator{width:clamp(280px,24vw,320px)}
+.contextual-calculator header span{min-width:0;flex:1;gap:6px;font-size:clamp(10px,1vw,13px);white-space:nowrap}
+.contextual-calculator header span b{min-width:0;overflow:visible;text-overflow:clip;white-space:nowrap}
+@media(max-width:1200px){
+  .column-head b{gap:2px;font-size:10px}
+  .column-head b svg{width:12px;height:12px}
+  .data-card h2{gap:3px;padding-inline:3px;font-size:9px}
+  .focus-card h2{padding-left:4px;padding-right:35px}
+  .data-card h2 svg{width:11px;height:11px}
+  .focus-card th{font-size:8px}
+}
+
+/* The five editable 5S results need three rows on a short TV viewport. */
+@media(max-height:820px){
+  .qra-card.qra-detail-mode .qra-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:3px}
+  .qra-card.qra-detail-mode .radar-score,.qra-card.qra-detail-mode .radar-score:last-child{grid-column:auto;min-width:0;gap:2px;padding:1px 4px}
+  .qra-card.qra-detail-mode .radar-score:last-child{grid-column:1/-1}
+  .qra-card.qra-detail-mode .radar-score small{min-width:0;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:clamp(9px,.8vw,11px);letter-spacing:0;white-space:nowrap}
+  .qra-card.qra-detail-mode .radar-score b{flex:0 0 auto;font-size:clamp(14px,1.15vw,18px)}
+}
+@media(max-height:560px){
+  .qra-card.qra-detail-mode .radar-score{padding-block:0}
+  .qra-card.qra-detail-mode .radar-score small{font-size:9px}
+  .qra-card.qra-detail-mode .radar-score b{font-size:12px}
+}
