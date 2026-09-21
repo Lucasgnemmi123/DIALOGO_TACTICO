@@ -123,6 +123,9 @@ body.summary-open .summary-view{height:calc(100vh - 88px);min-height:0;padding:6
   .qra-view-controls .qra-view-toggle,.customer-audit-toggle{width:28px;min-width:28px;height:28px}
 }
 @media(max-width:1200px){
+  .app-header .heading{flex-wrap:nowrap;gap:4px}
+  .app-header .heading h1,.app-header .heading span{font-size:12px}
+  .app-header .heading span{padding-left:4px}
   .column-head b{gap:3px;font-size:11px}
   .column-head b svg{width:13px;height:13px}
   .data-card .stat small{font-size:7px}
@@ -190,13 +193,29 @@ body.summary-open .summary-view{height:calc(100vh - 88px);min-height:0;padding:6
 .inline-workforce.single-workforce .person-handle{width:42px}
 .dotacion h2::after{content:none!important}
 
-/* Keep the footer date centered after removing the local JSON message. */
-footer>.system-date{grid-column:2;justify-self:center}
+/* Compact local date beside both brands in the main header. */
+.app-header .logo-box{display:grid;grid-template-columns:auto auto minmax(54px,1fr);align-items:center;gap:7px}
+.app-header .logo-box .dhl-logo{width:86px}
+.app-header .logo-box .aramark-logo{width:78px}
+.header-datetime{min-width:0;height:30px;display:flex;align-items:center;justify-content:center;gap:4px;padding-left:6px;border-left:1px solid #9d760066;color:#3c3100}
+.header-datetime>svg{width:11px;height:11px;flex:0 0 11px;stroke-width:2}
+.header-datetime>span{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:1px}
+#systemDate{font-family:"Inter","Segoe UI",sans-serif;font-size:7px;font-weight:750;line-height:1;letter-spacing:.01em;white-space:nowrap}
+#systemTime{padding:0;border:0;color:#2d270c;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:13px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* Daily expected weight is edited in the footer and saved with each meeting. */
+footer>.expected-kilos{grid-column:2;justify-self:center;min-width:0;display:flex;align-items:center;gap:6px;color:#dce9f0}
+.expected-kilos>span{display:flex;align-items:center;gap:4px;color:#dce9f0;font-family:"Inter","Segoe UI",sans-serif;font-size:7px;font-weight:800;letter-spacing:.025em;text-transform:uppercase}
+.expected-kilos>span svg{width:11px;height:11px;flex:0 0 11px;color:#ffd23f;stroke-width:2}
+.expected-kilos label{display:flex;align-items:center;gap:3px}
+.expected-kilos label b{color:#ffd23f;font-family:"Inter","Segoe UI",sans-serif;font-size:8px;font-weight:900;line-height:1}
+.expected-kilos input{width:clamp(86px,7vw,112px);height:24px;padding:0 7px;border:1px solid #42647b;border-radius:6px;color:#fff;background:#0b2d46;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:15px;font-weight:800;line-height:1;text-align:right;font-variant-numeric:tabular-nums;outline:none}
+.expected-kilos input:focus{border-color:#ffd23f;box-shadow:0 0 0 2px #ffd23f33}
 footer>#lastSaved{grid-column:3;justify-self:end}
 footer>#simulateData{grid-column:1;justify-self:start;width:auto;height:21px;display:inline-flex!important;align-items:center;gap:4px;padding:0 7px;border:1px solid #36566b;border-radius:6px;color:#9fb8c7;background:#0b2d46;font-family:"Inter","Segoe UI",sans-serif;font-size:7px;font-weight:800;line-height:1;letter-spacing:.01em;opacity:.68;touch-action:manipulation}
 footer>#simulateData svg{width:11px;height:11px;flex:0 0 11px;color:#ffd23f;stroke-width:2}
 footer>#simulateData:hover,footer>#simulateData:focus-visible,footer>#simulateData:active{border-color:#ffd23f;color:#fff;background:#123e5c;opacity:1;outline:none}
-body.summary-open footer>#simulateData{display:none!important}
+body.summary-open footer>#simulateData,body.summary-open footer>.expected-kilos{display:none!important}
 
 /* OMS productivity distribution and direct-hours intensity route. */
 .productivity-distribution,.hours-flow{min-width:0;min-height:0;flex:1;display:flex;padding:5px 9px 3px}
@@ -207,14 +226,14 @@ body.summary-open footer>#simulateData{display:none!important}
 .distribution-axis-line{stroke:#6c8da1;stroke-width:1}
 .distribution-reference{stroke:#66889c;stroke-width:1;stroke-dasharray:4 4}
 .distribution-reference.center{stroke:#a7bfcc;stroke-width:1.4}
-.distribution-mean{stroke:#ffd23f;stroke-width:2;stroke-dasharray:5 4}
-.distribution-axis,.distribution-reference-label,.distribution-mean-label,.distribution-point text{fill:#d8e7ee;font-family:"Inter","Segoe UI",sans-serif;font-size:10px;font-weight:800}
-.distribution-mean-label{fill:#ffe477;font-size:9px}
+.distribution-axis,.distribution-reference-label,.distribution-center-label,.distribution-point text{fill:#d8e7ee;font-family:"Inter","Segoe UI",sans-serif;font-size:10px;font-weight:800}
+.distribution-center-label{fill:#ffe477;font-size:9px;letter-spacing:.04em}
 .distribution-reference-label{fill:#b9d0dc;font-size:9px}
 .distribution-point circle{fill:#43bff2;stroke:#e8f8ff;stroke-width:2;filter:drop-shadow(0 0 4px #43bff2aa)}
 .distribution-point.manana circle{fill:#ffd23f;stroke:#fff2a6}
 .distribution-point.tarde circle{fill:#ef535b;stroke:#ffc0c4}
 .distribution-point text{fill:#fff;font-size:9px;text-shadow:0 1px 2px #001522}
+.distribution-point-label{paint-order:stroke;stroke:#06253b;stroke-width:3px;stroke-linejoin:round}
 .hours-target-zone{fill:#42c47b1f}
 .hours-target-label{fill:#75dfa5;font-family:"Inter","Segoe UI",sans-serif;font-size:8px;font-weight:900}
 .hours-flow-grid line{stroke:#41657b;stroke-width:1;stroke-dasharray:3 4}
@@ -228,11 +247,22 @@ body.summary-open footer>#simulateData{display:none!important}
 .chart-empty{min-height:0;flex:1;display:flex;align-items:center;justify-content:center;gap:9px;color:#89aabe;font-family:"Inter","Segoe UI",sans-serif;font-size:11px}
 .chart-empty svg{width:20px;height:20px;color:#ffd23f}
 @media(max-width:1350px){
+  .app-header .logo-box{grid-template-columns:auto auto minmax(46px,1fr);gap:5px}
+  .app-header .logo-box .dhl-logo{width:72px}
+  .app-header .logo-box .aramark-logo{width:64px}
+  .header-datetime{height:27px;gap:3px;padding-left:4px}
+  .header-datetime>svg{display:none}
+  #systemDate{font-size:6px}
+  #systemTime{font-size:12px}
   .inline-workforce.single-workforce .workforce-role{grid-template-columns:minmax(0,1fr) 34px;padding-inline:14px}
   .inline-workforce.single-workforce .person-handle{width:34px}
   .productivity-distribution,.hours-flow{padding-inline:5px}
   .distribution-axis,.distribution-reference-label,.distribution-point text,.hours-flow-grid text,.hours-flow-hour,.hours-flow-point text{font-size:8px}
-  .distribution-mean-label,.hours-target-label{font-size:7px}
+  .distribution-center-label,.hours-target-label{font-size:7px}
   footer>#simulateData{height:19px;padding-inline:5px;font-size:6px}
   footer>#simulateData svg{width:9px;height:9px;flex-basis:9px}
+  footer>.expected-kilos{gap:4px}
+  .expected-kilos>span{font-size:6px}
+  .expected-kilos>span svg{width:9px;height:9px;flex-basis:9px}
+  .expected-kilos input{width:82px;height:22px;padding-inline:5px;font-size:13px}
 }
