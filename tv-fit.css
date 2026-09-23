@@ -260,7 +260,7 @@ body.summary-open:not(.cut-nav-collapsed) .cut-nav{grid-template-columns:1fr aut
 body.summary-open:not(.cut-nav-collapsed) .cut-nav>.cut-nav-toggle{display:none}
 body.summary-open:not(.cut-nav-collapsed) .cut-nav>.footer-tools{grid-column:2;justify-self:center}
 
-/* Persistent multi-pointer whiteboard. */
+/* Persistent split notes: local keyboard on the left, multi-pointer drawing on the right. */
 .notes-backdrop,.capture-backdrop{position:fixed;inset:0;z-index:20000;display:none;place-items:center;padding:18px;background:#021421e8;backdrop-filter:blur(5px)}
 .notes-backdrop.open,.capture-backdrop.open{display:grid}
 .notes-panel{width:min(1200px,calc(100vw - 36px));height:min(760px,calc(100vh - 36px));min-width:0;min-height:0;display:grid;grid-template-rows:62px 50px minmax(0,1fr) 36px;overflow:hidden;border:1px solid #52748a;border-radius:16px;color:#eef6fa;background:#092b43;box-shadow:0 28px 80px #000a}
@@ -272,13 +272,31 @@ body.summary-open:not(.cut-nav-collapsed) .cut-nav>.footer-tools{grid-column:2;j
 .notes-panel>header h2{margin:0;font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:25px;line-height:1;white-space:nowrap}
 .notes-panel>header>button,.capture-preview>header>button{width:36px;height:36px;display:grid;place-items:center;padding:0;border:0;border-radius:9px;color:#fff;background:#b3050f;font-size:24px;line-height:1}
 .notes-toolbar{min-width:0;display:flex;align-items:center;gap:7px;padding:7px 12px;border-bottom:1px solid #315873;background:#0d344f}
+.notes-layout-label{min-width:0;display:flex;align-items:center;gap:7px;color:#dce9f0;font-size:10px;white-space:nowrap}
+.notes-layout-label svg{width:16px;height:16px;flex:0 0 16px;color:#ffd23f}
 .notes-toolbar>button,.drawing-tools button{height:34px;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 12px;border:1px solid #496d84;border-radius:8px;color:#dbe9f0;background:#153f5a;font-size:9px;font-weight:800;white-space:nowrap;touch-action:manipulation}
-.notes-toolbar button svg{width:15px;height:15px;flex:0 0 15px}
-.notes-toolbar button.active{border-color:#ffd23f;color:#17202a;background:#ffd23f}
-.drawing-tools{display:flex;align-items:center;gap:7px}
+.notes-toolbar button svg,.drawing-tools button svg{width:15px;height:15px;flex:0 0 15px}
+.drawing-tools{display:flex;align-items:center;gap:5px}
+.drawing-tools button.active{border-color:#ffd23f;color:#17202a;background:#ffd23f}
 .notes-toolbar .clear-notes{margin-left:auto;border-color:#b8474e;color:#fff;background:#8e1018}
-.notes-pages{min-width:0;min-height:0;padding:12px;background:#061f35}
-.notes-canvas-wrap{position:relative;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;border:1px solid #7792a2;border-radius:11px;background-color:#fbf8eb;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,#b9d0d8 35px);box-shadow:inset 0 0 0 4px #ffffff66;touch-action:none}
+.notes-pages{min-width:0;min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:12px;background:#061f35}
+.note-pane{min-width:0;min-height:0;overflow:hidden;border:1px solid #52748a;border-radius:11px;background:#092b43}
+.note-pane>header{min-width:0;height:42px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 10px;border-bottom:1px solid #52748a;background:#0d344f}
+.note-pane>header>span:first-child{min-width:0;display:flex;align-items:center;gap:7px;color:#f2f7fa;font-size:10px;white-space:nowrap}
+.note-pane>header>span:first-child svg{width:16px;height:16px;flex:0 0 16px;color:#ffd23f}
+.note-pane>header small{color:#9cb5c3;font-size:8px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.typed-note-pane{display:grid;grid-template-rows:42px minmax(0,1fr) auto}
+.drawing-note-pane{display:grid;grid-template-rows:42px minmax(0,1fr)}
+#importantNotes{width:100%;height:100%;min-width:0;min-height:0;margin:0;padding:13px 16px;resize:none;border:0;border-bottom:1px solid #9db0b8;color:#102e43;background-color:#fbf8eb;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 29px,#b9d0d8 30px);background-position:0 13px;font-family:"Inter","Segoe UI",sans-serif;font-size:16px;font-weight:650;line-height:30px;outline:none;caret-color:#b3050f;cursor:text}
+#importantNotes:focus{box-shadow:inset 0 0 0 3px #ffd23f99}
+.notes-keyboard{min-width:0;display:flex;flex-direction:column;gap:3px;padding:5px;background:#071f32;touch-action:manipulation}
+.notes-keyboard-row{min-width:0;display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}
+.notes-keyboard-row button{height:27px;min-width:0;display:flex;align-items:center;justify-content:center;gap:3px;padding:0 2px;border:1px solid #52748a;border-radius:6px;color:#f4f8fa;background:#16435e;font-family:"Inter","Segoe UI",sans-serif;font-size:10px;font-weight:800;line-height:1;white-space:nowrap;touch-action:manipulation}
+.notes-keyboard-row button:active,.notes-keyboard-row button.active{border-color:#ffd23f;color:#1f2409;background:#ffd23f}
+.notes-keyboard-actions{grid-template-columns:1.1fr 1.1fr 2fr 1.1fr 1.1fr}
+.notes-keyboard-actions button{font-size:7px}
+.notes-keyboard-actions button svg{width:11px;height:11px;flex:0 0 11px}
+.notes-canvas-wrap{position:relative;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;background-color:#fbf8eb;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 34px,#b9d0d8 35px);box-shadow:inset 0 0 0 4px #ffffff66;touch-action:none}
 #notesCanvas{display:block;width:100%;height:100%;cursor:crosshair;touch-action:none}
 #notesCanvas.eraser-active{cursor:cell}
 #notesCanvasHint{position:absolute;left:50%;top:50%;padding:9px 15px;border-radius:20px;color:#5d7380;background:#ffffffe0;font-size:10px;font-weight:750;white-space:nowrap;pointer-events:none;transform:translate(-50%,-50%)}
@@ -303,6 +321,7 @@ body.summary-open:not(.cut-nav-collapsed) .cut-nav>.footer-tools{grid-column:2;j
 .capture-actions button svg{width:16px;height:16px}
 .capture-actions .primary-share{border-color:#ffd23f;color:#211c00;background:#ffd23f}
 .capture-actions button[hidden]{display:none}
+.capture-actions button:disabled{border-color:#52636c;color:#8fa2ad;background:#263b48;cursor:not-allowed}
 #captureHelp{display:flex;align-items:center;justify-content:center;margin:0;padding:0 12px;color:#a9bfcc;font-size:9px;white-space:nowrap}
 .tool-toast{position:fixed;left:50%;bottom:52px;z-index:22000;max-width:calc(100vw - 30px);padding:10px 15px;border:1px solid #52748a;border-radius:9px;color:#fff;background:#0d344f;box-shadow:0 12px 32px #0008;font-size:10px;font-weight:800;white-space:nowrap;opacity:0;pointer-events:none;transform:translate(-50%,20px);transition:.18s}
 .tool-toast.show{opacity:1;transform:translate(-50%,0)}
@@ -375,7 +394,15 @@ body.summary-open:not(.cut-nav-collapsed) .cut-nav>.footer-tools{grid-column:2;j
   .notes-panel>header h2{font-size:21px}
   .notes-toolbar{padding:5px 9px}
   .notes-toolbar>button,.drawing-tools button{height:32px;padding-inline:9px;font-size:8px}
-  .notes-pages{padding:8px}
+  .notes-pages{gap:8px;padding:8px}
+  .note-pane>header{height:36px;padding-inline:8px}
+  .typed-note-pane{grid-template-rows:36px minmax(0,1fr) auto}
+  .drawing-note-pane{grid-template-rows:36px minmax(0,1fr)}
+  #importantNotes{padding:9px 12px;font-size:14px;line-height:26px;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 25px,#b9d0d8 26px);background-position:0 9px}
+  .notes-keyboard{gap:3px;padding:4px}
+  .notes-keyboard-row{gap:3px}
+  .notes-keyboard-row button{height:23px;font-size:8px}
+  .notes-keyboard-actions button{font-size:6px}
   .capture-preview{width:calc(100vw - 18px);height:calc(100vh - 18px);grid-template-rows:46px minmax(0,1fr) 46px 25px;border-radius:11px}
   .capture-image-wrap{padding:7px}
 }
